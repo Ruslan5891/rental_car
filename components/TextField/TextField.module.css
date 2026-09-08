@@ -1,0 +1,85 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  z-index: 1;
+  padding: 0 8px;
+  border-radius: 8px;
+  background-color: var(--color-error-bg);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.33;
+  color: var(--color-error);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition);
+}
+
+.wrapperError .label {
+  opacity: 1;
+}
+
+.control {
+  position: relative;
+}
+
+.field {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  padding: 13px 52px 13px 20px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-inputs);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--color-main);
+  outline: none;
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
+}
+
+.field::placeholder {
+  color: var(--color-gray);
+}
+
+.field:focus-visible {
+  border-color: var(--color-gray-light);
+}
+
+.textarea {
+  min-height: 88px;
+  resize: none;
+}
+
+.fieldError {
+  border-color: var(--color-error);
+  background-color: var(--color-error-bg);
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  transform: translateY(-50%);
+  color: var(--color-error);
+  pointer-events: none;
+}
+
+.error {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.33;
+  color: var(--color-error);
+}

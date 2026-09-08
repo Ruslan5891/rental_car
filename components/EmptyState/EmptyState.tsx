@@ -1,0 +1,39 @@
+import Image from 'next/image';
+import Button from '@/components/Button/Button';
+import css from './EmptyState.module.css';
+
+interface EmptyStateProps {
+  title?: string;
+  text?: string;
+  actionLabel?: string;
+  onAction?: () => void;
+}
+
+export default function EmptyState({
+  title = 'No cars found',
+  text = 'We couldn`t find any cars that match your current filters. Try changing your search criteria or reset the filters.',
+  actionLabel = 'Reset filters',
+  onAction,
+}: EmptyStateProps) {
+  return (
+    <div className={css.wrapper}>
+      <Image
+        className={css.image}
+        src="/images/not-found.png"
+        alt=""
+        width={413}
+        height={388}
+        priority
+      />
+      <div className={css.content}>
+        <h2 className={css.title}>{title}</h2>
+        <p className={css.text}>{text}</p>
+      </div>
+      {onAction && (
+        <Button variant="outline" onClick={onAction}>
+          {actionLabel}
+        </Button>
+      )}
+    </div>
+  );
+}
