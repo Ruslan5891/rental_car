@@ -1,14 +1,6 @@
-import { ROUTES } from '@/lib/constants';
-import type { CarFilters } from '@/types/car';
-
-export type SearchParamsInput = URLSearchParams | Record<string, string | string[] | undefined>;
-
-export interface CarFiltersDraft {
-  brand: string;
-  price: string;
-  minMileage: string;
-  maxMileage: string;
-}
+import { FILTER_PARAMS, ROUTES } from '@/lib/constants';
+import type { CarFilters, CarFiltersDraft } from '@/types/car';
+import type { SearchParamsInput } from '@/types/common';
 
 function readParam(params: SearchParamsInput, key: string): string | undefined {
   if (params instanceof URLSearchParams) {
@@ -29,18 +21,18 @@ function parseNonNegativeInteger(value: string | undefined): number | undefined 
 }
 
 export function parseCarFilters(params: SearchParamsInput): CarFilters {
-  const brand = readParam(params, 'brand')?.trim();
+  const brand = readParam(params, FILTER_PARAMS.brand)?.trim();
   const filters: CarFilters = {};
 
   if (brand) filters.brand = brand;
 
-  const price = parseNonNegativeInteger(readParam(params, 'price'));
+  const price = parseNonNegativeInteger(readParam(params, FILTER_PARAMS.price));
   if (price !== undefined) filters.price = price;
 
-  const minMileage = parseNonNegativeInteger(readParam(params, 'minMileage'));
+  const minMileage = parseNonNegativeInteger(readParam(params, FILTER_PARAMS.minMileage));
   if (minMileage !== undefined) filters.minMileage = minMileage;
 
-  const maxMileage = parseNonNegativeInteger(readParam(params, 'maxMileage'));
+  const maxMileage = parseNonNegativeInteger(readParam(params, FILTER_PARAMS.maxMileage));
   if (maxMileage !== undefined) filters.maxMileage = maxMileage;
 
   return filters;
@@ -49,10 +41,12 @@ export function parseCarFilters(params: SearchParamsInput): CarFilters {
 export function serializeCarFilters(filters: CarFilters): string {
   const params = new URLSearchParams();
 
-  if (filters.brand) params.set('brand', filters.brand);
-  if (filters.price !== undefined) params.set('price', String(filters.price));
-  if (filters.minMileage !== undefined) params.set('minMileage', String(filters.minMileage));
-  if (filters.maxMileage !== undefined) params.set('maxMileage', String(filters.maxMileage));
+  if (filters.brand) params.set(FILTER_PARAMS.brand, filters.brand);
+  if (filters.price !== undefined) params.set(FILTER_PARAMS.price, String(filters.price));
+  if (filters.minMileage !== undefined)
+    params.set(FILTER_PARAMS.minMileage, String(filters.minMileage));
+  if (filters.maxMileage !== undefined)
+    params.set(FILTER_PARAMS.maxMileage, String(filters.maxMileage));
 
   return params.toString();
 }

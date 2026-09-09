@@ -1,3 +1,5 @@
+import type { CAR_SPEC_KEYS } from '@/lib/constants';
+
 export interface CarLocation {
   country: string;
   city: string;
@@ -40,12 +42,37 @@ export interface CarFilters {
   maxMileage?: number;
 }
 
+export interface CarFiltersDraft {
+  brand: string;
+  price: string;
+  minMileage: string;
+  maxMileage: string;
+}
+
+export interface FetchCarsOptions extends CarFilters {
+  page?: number;
+  perPage?: number;
+}
+
+export interface FetchCarsQuery extends CarFilters {
+  page: number;
+  perPage: number;
+}
+
 export interface CarFiltersMeta {
   brands: string[];
   price: {
     min: number;
     max: number;
   };
+}
+
+export type CarSpecKey = (typeof CAR_SPEC_KEYS)[keyof typeof CAR_SPEC_KEYS];
+
+export interface CarSpec {
+  key: CarSpecKey;
+  label: string;
+  value: string;
 }
 
 export interface BookingRequest {
@@ -57,3 +84,5 @@ export interface BookingRequest {
 export interface BookingResponse {
   message: string;
 }
+
+export type BookingErrors = Partial<Record<keyof BookingRequest, string>>;

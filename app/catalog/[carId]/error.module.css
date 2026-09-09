@@ -1,0 +1,22 @@
+.main {
+  flex: 1;
+  padding: 84px 0 124px;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+}
+
+.text {
+  max-width: 480px;
+}

@@ -1,6 +1,8 @@
+export { default as BookingForm } from './BookingForm/BookingForm';
 export { default as Button } from './Button/Button';
 export { default as CarCard } from './CarCard/CarCard';
 export { default as CarFilters } from './CarFilters/CarFilters';
+export { default as CarInfo } from './CarInfo/CarInfo';
 export { default as CarList } from './CarList/CarList';
 export { default as Container } from './Container/Container';
 export { default as Dropdown } from './Dropdown/Dropdown';

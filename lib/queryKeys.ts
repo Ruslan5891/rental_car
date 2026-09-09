@@ -1,9 +1,10 @@
+import { QUERY_KEYS } from '@/lib/constants';
 import type { CarFilters } from '@/types/car';
 
 export const queryKeys = {
   cars: (filters: CarFilters) =>
     [
-      'cars',
+      QUERY_KEYS.cars,
       {
         brand: filters.brand ?? null,
         price: filters.price ?? null,
@@ -11,6 +12,5 @@ export const queryKeys = {
         maxMileage: filters.maxMileage ?? null,
       },
     ] as const,
-  carFilters: ['carFilters'] as const,
-  car: (id: string) => ['car', id] as const,
+  carFilters: [QUERY_KEYS.carFilters] as const,
 };

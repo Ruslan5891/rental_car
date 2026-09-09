@@ -11,13 +11,22 @@
   margin-top: 56px;
 }
 
+.cars {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+}
+
+.list {
+  position: relative;
+  width: 100%;
+}
+
 .more {
   display: flex;
   justify-content: center;
-}
-
-.loader {
-  margin-top: 0;
 }
 
 .message {

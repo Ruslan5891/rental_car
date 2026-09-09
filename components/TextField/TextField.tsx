@@ -30,7 +30,7 @@ export default function TextField(props: TextFieldProps) {
 
   return (
     <div className={cn(css.wrapper, hasError && css.wrapperError, className)}>
-      <label className={css.label} htmlFor={id}>
+      <label className={cn(css.label, required && css.labelRequired)} htmlFor={id}>
         {placeholder}
       </label>
       <div className={css.control}>

@@ -7,6 +7,7 @@ import Button from '@/components/Button/Button';
 import Dropdown from '@/components/Dropdown/Dropdown';
 import type { DropdownOption } from '@/components/Dropdown/types';
 import RangeInput from '@/components/RangeInput/RangeInput';
+import { FILTER_PARAMS } from '@/lib/constants';
 import { buildCarFilters, isMileageRangeValid } from '@/lib/filters';
 import { formatPrice, numberToInputValue } from '@/lib/format';
 import type { CarFiltersProps } from './types';
@@ -42,7 +43,7 @@ export default function CarFilters({ brands, prices, filters, onApply, onReset }
     <form className={css.form} role="search" aria-label="Car filters" onSubmit={handleSubmit}>
       <Dropdown
         label="Car brand"
-        name="brand"
+        name={FILTER_PARAMS.brand}
         placeholder="Choose a brand"
         options={brandOptions}
         value={brand}
@@ -50,7 +51,7 @@ export default function CarFilters({ brands, prices, filters, onApply, onReset }
       />
       <Dropdown
         label="Price/ 1 hour"
-        name="price"
+        name={FILTER_PARAMS.price}
         placeholder="Choose a price"
         options={priceOptions}
         value={price}
@@ -59,8 +60,8 @@ export default function CarFilters({ brands, prices, filters, onApply, onReset }
       />
       <RangeInput
         label="Car mileage / km"
-        fromName="minMileage"
-        toName="maxMileage"
+        fromName={FILTER_PARAMS.minMileage}
+        toName={FILTER_PARAMS.maxMileage}
         from={minMileage}
         to={maxMileage}
         onFromChange={setMinMileage}
