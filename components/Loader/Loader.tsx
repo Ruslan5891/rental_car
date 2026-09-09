@@ -1,11 +1,6 @@
+import { cn } from '@/lib/classNames';
+import type { LoaderProps } from './types';
 import css from './Loader.module.css';
-
-interface LoaderProps {
-  title?: string;
-  text?: string;
-  overlay?: boolean;
-  className?: string;
-}
 
 export default function Loader({
   title = 'Loading...',
@@ -14,14 +9,10 @@ export default function Loader({
   className,
 }: LoaderProps) {
   const card = (
-    <div
-      className={className ? `${css.card} ${className}` : css.card}
-      role="status"
-      aria-live="polite"
-    >
-      <span className={css.spinner} />
+    <div className={cn(css.card, className)} role="status" aria-live="polite">
+      <span className={css.spinner} aria-hidden="true" />
       <div className={css.content}>
-        <h2 className={css.title}>{title}</h2>
+        <p className={css.title}>{title}</p>
         <p className={css.text}>{text}</p>
       </div>
     </div>

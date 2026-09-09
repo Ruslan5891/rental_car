@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { CARS_PER_PAGE } from '@/lib/constants';
 import type {
   BookingRequest,
   BookingResponse,
@@ -11,8 +12,6 @@ import type {
 const api = axios.create({
   baseURL: 'https://car-rental-api.goit.study',
 });
-
-export const CARS_PER_PAGE = 12;
 
 export interface FetchCarsOptions extends CarFilters {
   page?: number;

@@ -1,57 +1,52 @@
+import { useId } from 'react';
 import type { InputHTMLAttributes, TextareaHTMLAttributes } from 'react';
 import { LuCircleAlert } from 'react-icons/lu';
+import { cn } from '@/lib/classNames';
+import type { TextFieldProps } from './types';
 import css from './TextField.module.css';
 
-interface TextFieldBaseProps {
-  label: string;
-  error?: string;
-  className?: string;
-}
-
-interface TextFieldAsInputProps extends TextFieldBaseProps, InputHTMLAttributes<HTMLInputElement> {
-  multiline?: false;
-}
-
-interface TextFieldAsTextareaProps
-  extends TextFieldBaseProps, TextareaHTMLAttributes<HTMLTextAreaElement> {
-  multiline: true;
-}
-
-type TextFieldProps = TextFieldAsInputProps | TextFieldAsTextareaProps;
-
 export default function TextField(props: TextFieldProps) {
-  const { label, error, className, id, required } = props;
+  const generatedId = useId();
+  const {
+    label,
+    error,
+    className,
+    id = generatedId,
+    required,
+    multiline: _multiline,
+    ...rest
+  } = props;
   const hasError = Boolean(error);
-  const errorId = id ? `${id}-error` : undefined;
+  const errorId = `${id}-error`;
   const placeholder = required ? `${label}*` : label;
+  const fieldClasses = cn(css.field, hasError && css.fieldError);
 
-  const wrapperClasses = [css.wrapper];
-  if (hasError) wrapperClasses.push(css.wrapperError);
-  if (className) wrapperClasses.push(className);
-
-  const fieldClasses = [css.field, hasError && css.fieldError].filter(Boolean).join(' ');
+  const controlProps = {
+    id,
+    placeholder,
+    'aria-invalid': hasError || undefined,
+    'aria-describedby': hasError ? errorId : undefined,
+  };
 
   return (
-    <div className={wrapperClasses.join(' ')}>
+    <div className={cn(css.wrapper, hasError && css.wrapperError, className)}>
       <label className={css.label} htmlFor={id}>
         {placeholder}
       </label>
       <div className={css.control}>
         {props.multiline ? (
           <textarea
-            {...stripCustomProps(props)}
-            className={`${fieldClasses} ${css.textarea}`}
-            placeholder={placeholder}
-            aria-invalid={hasError || undefined}
-            aria-describedby={hasError ? errorId : undefined}
+            {...(rest as TextareaHTMLAttributes<HTMLTextAreaElement>)}
+            {...controlProps}
+            required={required}
+            className={cn(fieldClasses, css.textarea)}
           />
         ) : (
           <input
-            {...stripCustomProps(props)}
+            {...(rest as InputHTMLAttributes<HTMLInputElement>)}
+            {...controlProps}
+            required={required}
             className={fieldClasses}
-            placeholder={placeholder}
-            aria-invalid={hasError || undefined}
-            aria-describedby={hasError ? errorId : undefined}
           />
         )}
         {hasError && <LuCircleAlert className={css.icon} aria-hidden="true" />}
@@ -63,16 +58,4 @@ export default function TextField(props: TextFieldProps) {
       )}
     </div>
   );
-}
-
-function stripCustomProps<T extends TextFieldProps>(props: T) {
-  const {
-    label: _label,
-    error: _error,
-    className: _className,
-    multiline: _multiline,
-    ...rest
-  } = props;
-
-  return rest;
 }

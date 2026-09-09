@@ -1,19 +1,13 @@
 import type { ChangeEvent } from 'react';
+import { cn } from '@/lib/classNames';
+import { formatDigits, stripNonDigits } from '@/lib/format';
+import type { RangeInputProps } from './types';
 import css from './RangeInput.module.css';
-
-interface RangeInputProps {
-  label: string;
-  from: string;
-  to: string;
-  onFromChange: (value: string) => void;
-  onToChange: (value: string) => void;
-  fromPlaceholder?: string;
-  toPlaceholder?: string;
-  className?: string;
-}
 
 export default function RangeInput({
   label,
+  fromName,
+  toName,
   from,
   to,
   onFromChange,
@@ -23,33 +17,37 @@ export default function RangeInput({
   className,
 }: RangeInputProps) {
   const handleFromChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onFromChange(event.target.value);
+    onFromChange(stripNonDigits(event.target.value));
   };
 
   const handleToChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onToChange(event.target.value);
+    onToChange(stripNonDigits(event.target.value));
   };
 
   return (
-    <fieldset className={className ? `${css.wrapper} ${className}` : css.wrapper}>
+    <fieldset className={cn(css.wrapper, className)}>
       <legend className={css.label}>{label}</legend>
       <div className={css.group}>
         <input
-          className={`${css.input} ${css.inputFrom}`}
+          className={cn(css.input, css.inputFrom)}
           type="text"
+          name={fromName}
           inputMode="numeric"
+          autoComplete="off"
           placeholder={fromPlaceholder}
           aria-label={`${label}, from`}
-          value={from}
+          value={formatDigits(from)}
           onChange={handleFromChange}
         />
         <input
-          className={`${css.input} ${css.inputTo}`}
+          className={cn(css.input, css.inputTo)}
           type="text"
+          name={toName}
           inputMode="numeric"
+          autoComplete="off"
           placeholder={toPlaceholder}
           aria-label={`${label}, to`}
-          value={to}
+          value={formatDigits(to)}
           onChange={handleToChange}
         />
       </div>

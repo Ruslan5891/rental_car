@@ -1,7 +1,25 @@
+const NON_DIGITS = /\D/g;
+
+export function formatNumber(value: number, locale = 'en-US'): string {
+  return new Intl.NumberFormat(locale).format(value);
+}
+
 export function formatMileage(mileage: number): string {
-  return `${new Intl.NumberFormat('uk-UA').format(mileage)} km`;
+  return `${formatNumber(mileage, 'uk-UA')} km`;
 }
 
 export function formatPrice(price: string | number): string {
   return `$${price}`;
+}
+
+export function stripNonDigits(value: string): string {
+  return value.replace(NON_DIGITS, '');
+}
+
+export function formatDigits(value: string): string {
+  return value === '' ? '' : formatNumber(Number(value));
+}
+
+export function numberToInputValue(value: number | undefined): string {
+  return value === undefined ? '' : String(value);
 }

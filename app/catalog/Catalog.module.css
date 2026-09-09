@@ -1,0 +1,40 @@
+.main {
+  flex: 1;
+  padding: 84px 0 124px;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  margin-top: 56px;
+}
+
+.more {
+  display: flex;
+  justify-content: center;
+}
+
+.loader {
+  margin-top: 0;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.messageTitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+}
+
+.messageText {
+  max-width: 480px;
+}

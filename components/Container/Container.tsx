@@ -1,13 +1,7 @@
-import type { ReactNode } from 'react';
+import { cn } from '@/lib/classNames';
+import type { ContainerProps } from './types';
 import css from './Container.module.css';
 
-interface ContainerProps {
-  children: ReactNode;
-  className?: string;
-}
-
 export default function Container({ children, className }: ContainerProps) {
-  return (
-    <div className={className ? `${css.container} ${className}` : css.container}>{children}</div>
-  );
+  return <div className={cn(css.container, className)}>{children}</div>;
 }

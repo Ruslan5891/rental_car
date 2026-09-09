@@ -2,14 +2,10 @@ import Image from 'next/image';
 import Button from '@/components/Button/Button';
 import { ROUTES } from '@/lib/constants';
 import { formatMileage, formatPrice } from '@/lib/format';
-import type { Car } from '@/types/car';
+import type { CarCardProps } from './types';
 import css from './CarCard.module.css';
 
-interface CarCardProps {
-  car: Car;
-}
-
-export default function CarCard({ car }: CarCardProps) {
+export default function CarCard({ car, priority = false }: CarCardProps) {
   const { id, img, brand, model, year, rentalPrice, location, rentalCompany, type, mileage } = car;
 
   const primaryBadges = [location.city, location.country, rentalCompany];
@@ -26,24 +22,27 @@ export default function CarCard({ car }: CarCardProps) {
             width={244}
             height={268}
             sizes="244px"
+            priority={priority}
           />
         </div>
         <div className={css.info}>
           <div className={css.heading}>
-            <h3 className={css.title}>
+            <h2 className={css.title}>
               {brand} <span className={css.model}>{model}</span>, {year}
-            </h3>
-            <span className={css.price}>{formatPrice(rentalPrice)}</span>
+            </h2>
+            <data className={css.price} value={rentalPrice}>
+              {formatPrice(rentalPrice)}
+            </data>
           </div>
           <div className={css.badges}>
-            <ul className={css.badgeRow}>
+            <ul className={css.badgeRow} role="list">
               {primaryBadges.map(badge => (
                 <li className={css.badge} key={badge}>
                   {badge}
                 </li>
               ))}
             </ul>
-            <ul className={css.badgeRow}>
+            <ul className={css.badgeRow} role="list">
               {secondaryBadges.map(badge => (
                 <li className={css.badge} key={badge}>
                   {badge}
@@ -60,6 +59,7 @@ export default function CarCard({ car }: CarCardProps) {
         className={css.button}
       >
         Read more
+        <span className="visually-hidden">{` about ${brand} ${model} (opens in a new tab)`}</span>
       </Button>
     </article>
   );

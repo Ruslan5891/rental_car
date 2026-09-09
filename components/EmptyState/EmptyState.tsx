@@ -1,13 +1,7 @@
 import Image from 'next/image';
 import Button from '@/components/Button/Button';
+import type { EmptyStateProps } from './types';
 import css from './EmptyState.module.css';
-
-interface EmptyStateProps {
-  title?: string;
-  text?: string;
-  actionLabel?: string;
-  onAction?: () => void;
-}
 
 export default function EmptyState({
   title = 'No cars found',
