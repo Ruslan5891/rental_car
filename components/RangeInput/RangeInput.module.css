@@ -1,7 +1,7 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-sm);
   margin: 0;
   padding: 0;
   border: none;
@@ -10,9 +10,9 @@
 
 .label {
   padding: 0;
-  margin-bottom: 8px;
-  font-size: 12px;
-  line-height: 1.33;
+  margin-bottom: var(--space-sm);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-relaxed);
   color: var(--color-gray);
 }
 
@@ -23,11 +23,11 @@
 .input {
   width: 160px;
   height: 44px;
-  padding: 12px 24px;
+  padding: 12px var(--space-lg);
   border: none;
   background-color: var(--color-white);
-  font-size: 16px;
-  line-height: 1.25;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
   color: var(--color-main);
   outline: none;
 }

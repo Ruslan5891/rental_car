@@ -1,4 +1,4 @@
 .main {
   flex: 1;
-  padding: 84px 0 124px;
+  padding: var(--page-padding-top) 0 var(--page-padding-bottom);
 }

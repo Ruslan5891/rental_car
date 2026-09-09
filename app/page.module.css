@@ -28,7 +28,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  gap: var(--space-2xl);
   text-align: center;
   color: var(--color-white);
 }
@@ -37,23 +37,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: var(--space-md);
 }
 
 .title {
-  font-weight: 700;
-  font-size: 60px;
-  line-height: 1.2;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-hero);
+  line-height: var(--line-height-tight);
 }
 
 .subtitle {
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 1.33;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-relaxed);
 }
 
 .button {
   width: 276px;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
 }

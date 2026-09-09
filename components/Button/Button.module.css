@@ -6,9 +6,9 @@
   height: 44px;
   padding: 12px 51px;
   border-radius: var(--radius-sm);
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 1.25;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
   white-space: nowrap;
   transition:
     background-color var(--transition),

@@ -2,13 +2,13 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-sm);
   width: 204px;
 }
 
 .label {
-  font-size: 12px;
-  line-height: 1.33;
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-relaxed);
   color: var(--color-gray);
 }
 
@@ -16,9 +16,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 32px;
+  gap: var(--space-xl);
   height: 44px;
-  padding: 12px 16px;
+  padding: 12px var(--space-md);
   border-radius: var(--radius-sm);
   background-color: var(--color-white);
   text-align: left;
@@ -29,9 +29,9 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.25;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
 }
 
 .value {
@@ -44,8 +44,8 @@
 
 .icon {
   flex-shrink: 0;
-  width: 16px;
-  height: 16px;
+  width: var(--icon-size);
+  height: var(--icon-size);
 }
 
 .list {
@@ -78,9 +78,9 @@
   width: 100%;
   padding: 4px 0;
   text-align: left;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.25;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
   color: var(--color-gray);
   cursor: pointer;
   transition: color var(--transition);

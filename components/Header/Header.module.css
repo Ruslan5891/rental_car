@@ -18,13 +18,13 @@
 .navList {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: var(--space-xl);
 }
 
 .navLink {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.25;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
   color: var(--color-main);
   transition: color var(--transition);
 }

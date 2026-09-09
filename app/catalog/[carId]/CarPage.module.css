@@ -1,24 +1,24 @@
 .main {
   flex: 1;
-  padding: 84px 0 124px;
+  padding: var(--page-padding-top) 0 var(--page-padding-bottom);
 }
 
 .layout {
   display: grid;
   grid-template-columns: 640px 1fr;
   align-items: start;
-  gap: 32px;
+  gap: var(--space-xl);
 }
 
 .aside {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: var(--space-2xl);
 }
 
 .image {
   width: 640px;
   height: 512px;
-  border-radius: 19px;
+  border-radius: var(--radius-lg);
   object-fit: cover;
 }

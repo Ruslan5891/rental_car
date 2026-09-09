@@ -1,9 +1,9 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 32px;
-  border-radius: 16px;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
   border: 1px solid var(--color-gray-light);
   background-color: var(--color-white);
 }
@@ -11,25 +11,25 @@
 .heading {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-sm);
 }
 
 .title {
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 1.2;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-tight);
 }
 
 .subtitle {
-  font-size: 16px;
-  line-height: 1.25;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
   color: var(--color-gray);
 }
 
 .fields {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--space-md);
 }
 
 .submit {
