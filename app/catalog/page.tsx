@@ -32,7 +32,10 @@ export default async function CatalogPage({ searchParams }: PageProps<'/catalog'
         <HydrationBoundary state={dehydrate(queryClient)}>
           <CatalogFilters key={filtersKey} filters={filters} />
         </HydrationBoundary>
-        <section className={css.results} aria-label="Search results">
+        <section className={css.results} aria-labelledby="results-title">
+          <h2 id="results-title" className="visually-hidden">
+            Search results
+          </h2>
           <Suspense
             key={filtersKey}
             fallback={

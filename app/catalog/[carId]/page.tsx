@@ -30,19 +30,17 @@ export default async function CarPage({ params }: PageProps<'/catalog/[carId]'>)
   return (
     <main className={css.main}>
       <Container className={css.layout}>
-        <div className={css.aside}>
-          <Image
-            className={css.image}
-            src={car.img}
-            alt={formatCarTitle(car.brand, car.model, car.year)}
-            width={640}
-            height={512}
-            sizes="640px"
-            priority
-          />
-          <BookingForm carId={car.id} />
-        </div>
-        <CarInfo car={car} />
+        <Image
+          className={css.image}
+          src={car.img}
+          alt={formatCarTitle(car.brand, car.model, car.year)}
+          width={640}
+          height={512}
+          sizes="(min-width: 1280px) 640px, 100vw"
+          priority
+        />
+        <CarInfo car={car} className={css.info} />
+        <BookingForm carId={car.id} className={css.form} />
       </Container>
     </main>
   );

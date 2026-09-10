@@ -26,7 +26,6 @@
   color: var(--color-white);
 }
 
-.primary:hover:not(:disabled),
 .primary:focus-visible {
   background-color: var(--color-accent-hover);
 }
@@ -38,7 +37,22 @@
   color: var(--color-main);
 }
 
-.outline:hover:not(:disabled),
 .outline:focus-visible {
   border-color: var(--color-accent-hover);
+}
+
+@media (hover: hover) {
+  .primary:hover:not(:disabled) {
+    background-color: var(--color-accent-hover);
+  }
+
+  .outline:hover:not(:disabled) {
+    border-color: var(--color-accent-hover);
+  }
+}
+
+@media (hover: none) {
+  .button:active:not(:disabled) {
+    transform: scale(0.98);
+  }
 }

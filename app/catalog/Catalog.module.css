@@ -7,16 +7,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-3xl);
-  margin-top: 56px;
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
 }
 
 .cars {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-3xl);
+  gap: var(--space-xl);
   width: 100%;
+}
+
+@media (min-width: 768px) {
+  .results {
+    gap: var(--space-3xl);
+    margin-top: 56px;
+  }
+
+  .cars {
+    gap: var(--space-3xl);
+  }
 }
 
 .list {

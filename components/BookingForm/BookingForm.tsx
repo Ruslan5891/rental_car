@@ -5,6 +5,7 @@ import type { ChangeEvent, SubmitEvent } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import Button from '@/components/Button/Button';
+import { cn } from '@/lib/classNames';
 import TextField from '@/components/TextField/TextField';
 import { createBookingRequest } from '@/lib/api';
 import { BOOKING_ERROR_TOAST, BOOKING_FIELDS, BOOKING_INITIAL_VALUES } from '@/lib/constants';
@@ -13,7 +14,7 @@ import type { BookingErrors, BookingRequest } from '@/types/car';
 import type { BookingFormProps } from './types';
 import css from './BookingForm.module.css';
 
-export default function BookingForm({ carId }: BookingFormProps) {
+export default function BookingForm({ carId, className }: BookingFormProps) {
   const [values, setValues] = useState<BookingRequest>(BOOKING_INITIAL_VALUES);
   const [errors, setErrors] = useState<BookingErrors>({});
 
@@ -49,7 +50,12 @@ export default function BookingForm({ carId }: BookingFormProps) {
   };
 
   return (
-    <form className={css.form} noValidate onSubmit={handleSubmit} aria-labelledby="booking-title">
+    <form
+      className={cn(css.form, className)}
+      noValidate
+      onSubmit={handleSubmit}
+      aria-labelledby="booking-title"
+    >
       <div className={css.heading}>
         <h2 id="booking-title" className={css.title}>
           Book your car now

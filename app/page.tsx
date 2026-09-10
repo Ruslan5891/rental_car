@@ -14,15 +14,7 @@ export default function HomePage() {
   return (
     <main>
       <section className={css.hero} aria-labelledby="hero-title">
-        <Image
-          className={css.image}
-          src="/images/hero.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          quality={85}
-        />
+        <Image className={css.image} src="/images/hero.jpg" alt="" fill priority sizes="100vw" />
         <div className={css.content}>
           <div className={css.text}>
             <h1 id="hero-title" className={css.title}>

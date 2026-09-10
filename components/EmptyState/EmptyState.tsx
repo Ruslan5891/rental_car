@@ -16,7 +16,7 @@ export default function EmptyState({
         className={css.image}
         src="/images/not-found.png"
         alt=""
-        width={413}
+        width={414}
         height={388}
         priority
       />

@@ -8,8 +8,9 @@
 }
 
 .image {
-  width: 413px;
-  height: 388px;
+  width: 100%;
+  max-width: 413px;
+  height: auto;
 }
 
 .content {

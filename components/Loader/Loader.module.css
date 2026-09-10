@@ -21,7 +21,7 @@
   width: 543px;
   max-width: 100%;
   margin: 0 auto;
-  padding: 48px 96px;
+  padding: var(--space-xl) var(--space-lg);
   border-radius: var(--radius-lg);
   background-color: var(--color-white);
   text-align: center;
@@ -55,6 +55,12 @@
   font-size: var(--font-size-md);
   line-height: var(--line-height-base);
   color: var(--color-main);
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 48px 96px;
+  }
 }
 
 @keyframes spin {

@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast';
 import 'modern-normalize/modern-normalize.css';
 import './globals.css';
 import { Header, TanStackProvider } from '@/components';
+import { TOAST_DURATION } from '@/lib/constants';
 
 const manrope = Manrope({
   weight: ['400', '500', '600', '700'],
@@ -25,7 +26,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
         <TanStackProvider>
           <Header />
           {children}
-          <Toaster position="top-center" />
+          <Toaster position="top-center" toastOptions={{ duration: TOAST_DURATION }} />
         </TanStackProvider>
       </body>
     </html>

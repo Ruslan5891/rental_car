@@ -27,9 +27,9 @@ export default function CarCard({ car, priority = false }: CarCardProps) {
         </div>
         <div className={css.info}>
           <div className={css.heading}>
-            <h2 className={css.title}>
+            <h3 className={css.title}>
               {brand} <span className={css.model}>{model}</span>, {year}
-            </h2>
+            </h3>
             <data className={css.price} value={rentalPrice}>
               {formatPrice(rentalPrice)}
             </data>

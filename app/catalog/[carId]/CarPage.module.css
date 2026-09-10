@@ -5,20 +5,45 @@
 
 .layout {
   display: grid;
-  grid-template-columns: 640px 1fr;
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    'image'
+    'info'
+    'form';
   gap: var(--space-xl);
 }
 
-.aside {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2xl);
-}
-
 .image {
-  width: 640px;
-  height: 512px;
+  grid-area: image;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 640 / 512;
   border-radius: var(--radius-lg);
   object-fit: cover;
+}
+
+.info {
+  grid-area: info;
+}
+
+.form {
+  grid-area: form;
+}
+
+@media (min-width: 768px) {
+  .layout {
+    gap: var(--space-2xl);
+  }
+}
+
+@media (min-width: 1280px) {
+  .layout {
+    grid-template-columns: 640px minmax(0, 1fr);
+    grid-template-areas:
+      'image info'
+      'form info';
+    align-items: start;
+    column-gap: var(--space-xl);
+    row-gap: var(--space-2xl);
+  }
 }

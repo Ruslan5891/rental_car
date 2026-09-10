@@ -1,7 +1,26 @@
+/* Card set: --items and --indent-* change per breakpoint */
 .list {
+  --items: 1;
+  --indent-x: var(--space-md);
+  --indent-y: var(--space-xl);
+
   display: grid;
-  grid-template-columns: repeat(4, 276px);
-  justify-content: center;
-  column-gap: var(--space-xl);
-  row-gap: var(--space-3xl);
+  grid-template-columns: repeat(var(--items), minmax(0, 1fr));
+  column-gap: var(--indent-x);
+  row-gap: var(--indent-y);
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .list {
+    --items: 2;
+    --indent-x: var(--space-xl);
+    --indent-y: var(--space-3xl);
+  }
+}
+
+@media (min-width: 1280px) {
+  .list {
+    --items: 4;
+  }
 }

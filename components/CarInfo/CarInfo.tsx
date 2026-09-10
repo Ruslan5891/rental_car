@@ -6,7 +6,7 @@ import { formatCarTitle, formatPrice } from '@/lib/format';
 import type { CarInfoProps } from './types';
 import css from './CarInfo.module.css';
 
-export default function CarInfo({ car }: CarInfoProps) {
+export default function CarInfo({ car, className }: CarInfoProps) {
   const {
     brand,
     model,
@@ -21,7 +21,7 @@ export default function CarInfo({ car }: CarInfoProps) {
   const specs = buildCarSpecs(car);
 
   return (
-    <div className={css.card}>
+    <div className={cn(css.card, className)}>
       <div className={css.header}>
         <div className={css.heading}>
           <h1 className={css.title}>{formatCarTitle(brand, model, year)}</h1>

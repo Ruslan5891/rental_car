@@ -29,8 +29,13 @@
   transition: color var(--transition);
 }
 
-.navLink:hover,
 .navLink:focus-visible,
 .navLinkActive {
   color: var(--color-accent);
+}
+
+@media (hover: hover) {
+  .navLink:hover {
+    color: var(--color-accent);
+  }
 }

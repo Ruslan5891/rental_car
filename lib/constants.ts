@@ -30,6 +30,8 @@ export const CARS_PER_PAGE = 12;
 
 export const PRIORITY_CARDS_COUNT = 4;
 
+export const TOAST_DURATION = 4000;
+
 export const PRICE_STEP = 10;
 
 export const BOOKING_INITIAL_VALUES: BookingRequest = { name: '', email: '', comment: '' };

@@ -17,7 +17,7 @@
   --font-size-md: 16px;
   --font-size-lg: 20px;
   --font-size-xl: 24px;
-  --font-size-hero: 60px;
+  --font-size-hero: 32px;
 
   --line-height-tight: 1.2;
   --line-height-base: 1.25;
@@ -44,12 +44,36 @@
   --icon-size: 16px;
 
   --header-height: 68px;
-  --container-width: 1440px;
-  --container-padding: 120px;
-  --page-padding-top: 84px;
-  --page-padding-bottom: 124px;
+  --container-width: 1280px;
+  --container-padding: 16px;
+  --page-padding-top: 40px;
+  --page-padding-bottom: 64px;
 
   --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/*
+  Breakpoints (mobile-first, min-width):
+  mobile  320px  — base styles
+  tablet  768px
+  desktop 1280px — content width 1200px, matches the 1440px Figma layout
+*/
+@media (min-width: 768px) {
+  :root {
+    --font-size-hero: 44px;
+    --container-padding: 32px;
+    --page-padding-top: 64px;
+    --page-padding-bottom: 96px;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --font-size-hero: 60px;
+    --container-padding: 40px;
+    --page-padding-top: 84px;
+    --page-padding-bottom: 124px;
+  }
 }
 
 html {
