@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RentalCar
 
-## Getting Started
+Фронтенд вебзастосунку для компанії з оренди автомобілів RentalCar: каталог
+авто з фільтрацією на бекенді, довантаження карток через Load More та форма
+оренди на сторінці окремого автомобіля.
 
-First, run the development server:
+Тестове завдання GoIT, модуль «Advanced Front End Engineering».
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Технології
+
+- Next.js 16 (App Router) + TypeScript
+- TanStack Query (`useInfiniteQuery` для пагінації, `useMutation` для форми)
+- Axios
+- CSS Modules, дизайн-токени в `app/globals.css`
+- React Icons
+- react-hot-toast
+
+## Сторінки
+
+| Маршрут            | Опис                                                                      |
+| ------------------ | ------------------------------------------------------------------------- |
+| `/`                | Домашня сторінка з hero-банером і кнопкою **View Catalog**                |
+| `/catalog`         | Каталог автомобілів: фільтри, список карток, кнопка **Load more**         |
+| `/catalog/[carId]` | Сторінка автомобіля: фото, характеристики, умови оренди, форма бронювання |
+
+Сторінка автомобіля відкривається з картки в новій вкладці (кнопка **Read more**).
+
+## Основні функції
+
+- **Фільтрація на бекенді** за брендом, ціною за годину та пробігом (від/до).
+  Фільтри зберігаються в URL (`?brand=Audi&price=40&minMileage=1000`), тому
+  посиланням із фільтрами можна поділитися.
+- **Load More** через `useInfiniteQuery`: наступні сторінки довантажуються з
+  урахуванням активних фільтрів.
+- **SSR + гідратація кешу**: перша сторінка каталогу та довідник фільтрів
+  завантажуються на сервері й передаються на клієнт через `HydrationBoundary`.
+- **Форма оренди** з власною валідацією; дані надсилаються на
+  `POST /cars/:carId/booking-requests`, після успіху показується нотифікація.
+- **Стани завантаження та помилок**: лоадер під час запитів, `error.tsx` для
+  каталогу й сторінки авто, сторінка 404 для неіснуючого автомобіля, порожній
+  стан, якщо за фільтрами нічого не знайдено.
+- **SEO**: `metadata` для статичних сторінок, `generateMetadata` з Open Graph
+  для сторінки автомобіля.
+- Семантична розмітка та адаптивність (320 / 768 / 1280 px).
+
+## Структура проєкту
+
+```
+app/          маршрути App Router, глобальні стилі, error/not-found
+components/   UI-компоненти (кожен у своїй теці зі стилями й типами)
+lib/          API-клієнт, робота з фільтрами, пагінацією, валідація, константи
+types/        спільні TypeScript-типи
+public/       статичні зображення
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Встановлення та запуск
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+git clone https://github.com/Ruslan5891/rental_car.git
+cd rental_car
+pnpm install
+cp .env.example .env.local
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Застосунок буде доступний на [http://localhost:3000](http://localhost:3000).
 
-## Learn More
+Змінні оточення (`.env.local`):
 
-To learn more about Next.js, take a look at the following resources:
+| Змінна                | Опис                                                       |
+| --------------------- | ---------------------------------------------------------- |
+| `NEXT_PUBLIC_API_URL` | Базова адреса бекенду, `https://car-rental-api.goit.study` |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Інші команди:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+pnpm build   # продакшен-збірка
+pnpm start   # запуск продакшен-збірки
+pnpm lint    # ESLint
+```
 
-## Deploy on Vercel
+## Бекенд
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Публічний API GoIT без авторизації:
+[https://car-rental-api.goit.study/api-docs/](https://car-rental-api.goit.study/api-docs/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Автор
+
+Ruslan Stupak — [GitHub](https://github.com/Ruslan5891)

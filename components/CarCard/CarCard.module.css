@@ -7,6 +7,15 @@
   padding: var(--space-md);
   border-radius: var(--radius-lg);
   background-color: var(--color-white);
+  transition:
+    transform var(--transition-slow),
+    box-shadow var(--transition-slow);
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(var(--lift-offset));
+  box-shadow: var(--shadow-lift);
 }
 
 .body {
@@ -26,6 +35,17 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+
+  .card:hover,
+  .card:focus-within {
+    transform: none;
+  }
 }
 
 .info {

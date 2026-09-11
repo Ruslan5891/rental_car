@@ -12,7 +12,7 @@ import type {
 } from '@/types/car';
 
 const api = axios.create({
-  baseURL: 'https://car-rental-api.goit.study',
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
 });
 
 export async function fetchCars({
