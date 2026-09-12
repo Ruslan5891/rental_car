@@ -37,14 +37,14 @@ export default function CarCard({ car, priority = false }: CarCardProps) {
           <div className={css.badges}>
             <ul className={css.badgeRow} role="list">
               {primaryBadges.map(badge => (
-                <li className={css.badge} key={badge}>
+                <li key={badge} className={css.badge}>
                   {badge}
                 </li>
               ))}
             </ul>
             <ul className={css.badgeRow} role="list">
               {secondaryBadges.map(badge => (
-                <li className={css.badge} key={badge}>
+                <li key={badge} className={css.badge}>
                   {badge}
                 </li>
               ))}
@@ -53,10 +53,10 @@ export default function CarCard({ car, priority = false }: CarCardProps) {
         </div>
       </div>
       <Button
+        className={css.button}
         href={ROUTES.car(id)}
         target="_blank"
         rel="noopener noreferrer"
-        className={css.button}
       >
         Read more
         <span className="visually-hidden">{` about ${brand} ${model} (opens in a new tab)`}</span>

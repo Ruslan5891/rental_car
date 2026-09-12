@@ -38,21 +38,21 @@ export default function TextField(props: TextFieldProps) {
           <textarea
             {...(rest as TextareaHTMLAttributes<HTMLTextAreaElement>)}
             {...controlProps}
-            required={required}
             className={cn(fieldClasses, css.textarea)}
+            required={required}
           />
         ) : (
           <input
             {...(rest as InputHTMLAttributes<HTMLInputElement>)}
             {...controlProps}
-            required={required}
             className={fieldClasses}
+            required={required}
           />
         )}
         {hasError && <LuCircleAlert className={css.icon} aria-hidden="true" />}
       </div>
       {hasError && (
-        <span id={errorId} className={css.error}>
+        <span className={css.error} id={errorId}>
           {error}
         </span>
       )}

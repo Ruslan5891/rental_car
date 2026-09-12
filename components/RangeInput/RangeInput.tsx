@@ -30,24 +30,24 @@ export default function RangeInput({
       <div className={css.group}>
         <input
           className={cn(css.input, css.inputFrom)}
-          type="text"
           name={fromName}
+          type="text"
+          value={formatDigits(from)}
+          aria-label={`${label}, from`}
           inputMode="numeric"
           autoComplete="off"
           placeholder={fromPlaceholder}
-          aria-label={`${label}, from`}
-          value={formatDigits(from)}
           onChange={handleFromChange}
         />
         <input
           className={cn(css.input, css.inputTo)}
-          type="text"
           name={toName}
+          type="text"
+          value={formatDigits(to)}
+          aria-label={`${label}, to`}
           inputMode="numeric"
           autoComplete="off"
           placeholder={toPlaceholder}
-          aria-label={`${label}, to`}
-          value={formatDigits(to)}
           onChange={handleToChange}
         />
       </div>

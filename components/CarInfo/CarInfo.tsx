@@ -37,12 +37,12 @@ export default function CarInfo({ car, className }: CarInfoProps) {
       </div>
       <p className={css.description}>{description}</p>
       <section className={css.section} aria-labelledby="rental-conditions">
-        <h2 id="rental-conditions" className={css.subtitle}>
+        <h2 className={css.subtitle} id="rental-conditions">
           Rental Conditions:
         </h2>
         <ul className={css.list} role="list">
           {rentalConditions.map(condition => (
-            <li className={css.item} key={condition}>
+            <li key={condition} className={css.item}>
               <LuCircleCheck className={css.icon} aria-hidden="true" />
               {condition}
             </li>
@@ -50,7 +50,7 @@ export default function CarInfo({ car, className }: CarInfoProps) {
         </ul>
       </section>
       <section className={css.section} aria-labelledby="car-specifications">
-        <h2 id="car-specifications" className={css.subtitle}>
+        <h2 className={css.subtitle} id="car-specifications">
           Car Specifications:
         </h2>
         <dl className={css.list}>
@@ -58,7 +58,7 @@ export default function CarInfo({ car, className }: CarInfoProps) {
             const Icon = CAR_SPEC_ICONS[key];
 
             return (
-              <div className={cn(css.item, css.spec)} key={key}>
+              <div key={key} className={cn(css.item, css.spec)}>
                 <dt className={css.term}>
                   <Icon className={css.icon} aria-hidden="true" />
                   {label}:
@@ -70,12 +70,12 @@ export default function CarInfo({ car, className }: CarInfoProps) {
         </dl>
       </section>
       <section className={css.section} aria-labelledby="car-features">
-        <h2 id="car-features" className={css.subtitle}>
+        <h2 className={css.subtitle} id="car-features">
           Features
         </h2>
         <ul className={css.list} role="list">
           {features.map(feature => (
-            <li className={css.item} key={feature}>
+            <li key={feature} className={css.item}>
               <LuCircleCheck className={css.icon} aria-hidden="true" />
               {feature}
             </li>

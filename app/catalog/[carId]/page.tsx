@@ -39,8 +39,8 @@ export default async function CarPage({ params }: PageProps<'/catalog/[carId]'>)
           sizes="(min-width: 1280px) 640px, 100vw"
           priority
         />
-        <CarInfo car={car} className={css.info} />
-        <BookingForm carId={car.id} className={css.form} />
+        <CarInfo className={css.info} car={car} />
+        <BookingForm className={css.form} carId={car.id} />
       </Container>
     </main>
   );

@@ -11,7 +11,7 @@ export default function Button(props: ButtonProps) {
     const { href, target, rel } = props;
 
     return (
-      <Link href={href} target={target} rel={rel} className={classes}>
+      <Link className={classes} href={href} target={target} rel={rel}>
         {children}
       </Link>
     );
@@ -20,7 +20,7 @@ export default function Button(props: ButtonProps) {
   const { href: _href, variant: _variant, className: _className, type = 'button', ...rest } = props;
 
   return (
-    <button type={type} className={classes} {...rest}>
+    <button className={classes} type={type} {...rest}>
       {children}
     </button>
   );

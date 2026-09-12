@@ -21,8 +21,8 @@ export default function Navigation() {
           return (
             <li key={href}>
               <Link
-                href={href}
                 className={cn(css.navLink, active && css.navLinkActive)}
+                href={href}
                 aria-current={active ? 'page' : undefined}
               >
                 {label}

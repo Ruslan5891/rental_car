@@ -52,12 +52,12 @@ export default function BookingForm({ carId, className }: BookingFormProps) {
   return (
     <form
       className={cn(css.form, className)}
+      aria-labelledby="booking-title"
       noValidate
       onSubmit={handleSubmit}
-      aria-labelledby="booking-title"
     >
       <div className={css.heading}>
-        <h2 id="booking-title" className={css.title}>
+        <h2 className={css.title} id="booking-title">
           Book your car now
         </h2>
         <p className={css.subtitle}>Stay connected! We are always ready to help you.</p>
@@ -88,13 +88,13 @@ export default function BookingForm({ carId, className }: BookingFormProps) {
           name={BOOKING_FIELDS.comment}
           multiline
           rows={3}
-          aria-required="true"
           value={values.comment}
+          aria-required="true"
           error={errors.comment}
           onChange={handleChange}
         />
       </div>
-      <Button type="submit" className={css.submit} disabled={isPending}>
+      <Button className={css.submit} type="submit" disabled={isPending}>
         Send
       </Button>
     </form>

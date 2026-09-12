@@ -25,9 +25,9 @@
   gap: var(--space-xl);
   height: 44px;
   padding: 12px var(--space-md);
+  text-align: left;
   border-radius: var(--radius-sm);
   background-color: var(--color-white);
-  text-align: left;
 }
 
 .value,
@@ -62,10 +62,10 @@
   z-index: 10;
   max-height: 272px;
   padding: 14px 18px;
+  overflow-y: auto;
   border-radius: var(--radius-sm);
   background-color: var(--color-white);
-  box-shadow: 0 4px 36px rgba(0, 0, 0, 0.02);
-  overflow-y: auto;
+  box-shadow: 0 4px 36px rgb(0 0 0 / 0.02);
   scrollbar-width: thin;
   scrollbar-color: var(--color-gray-light) transparent;
 }

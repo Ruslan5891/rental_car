@@ -17,12 +17,12 @@ export default function HomePage() {
         <Image className={css.image} src="/images/hero.jpg" alt="" fill priority sizes="100vw" />
         <div className={css.content}>
           <div className={css.text}>
-            <h1 id="hero-title" className={css.title}>
+            <h1 className={css.title} id="hero-title">
               Find your perfect rental car
             </h1>
             <p className={css.subtitle}>Reliable and budget-friendly rentals for any journey</p>
           </div>
-          <Button href={ROUTES.catalog} className={css.button}>
+          <Button className={css.button} href={ROUTES.catalog}>
             View Catalog
           </Button>
         </div>

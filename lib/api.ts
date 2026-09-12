@@ -30,9 +30,6 @@ export async function fetchCars({
   if (minMileage !== undefined) params.minMileage = minMileage;
   if (maxMileage !== undefined) params.maxMileage = maxMileage;
 
-  // ТИМЧАСОВО: штучна затримка, щоб перевірити лоадер. Видалити перед комітом.
-  await new Promise(resolve => setTimeout(resolve, 3000));
-
   const response = await api.get<CarsResponse>('/cars', { params });
 
   return response.data;

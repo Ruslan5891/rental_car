@@ -50,13 +50,13 @@ export default function CarFilters({ brands, prices, filters, onApply, onReset }
         onChange={setBrand}
       />
       <Dropdown
+        className={css.price}
         label="Price/ 1 hour"
         name={FILTER_PARAMS.price}
         placeholder="Choose a price"
         options={priceOptions}
         value={price}
         onChange={setPrice}
-        className={css.price}
       />
       <RangeInput
         label="Car mileage / km"
@@ -69,7 +69,7 @@ export default function CarFilters({ brands, prices, filters, onApply, onReset }
       />
       <div className={css.actions}>
         <Button type="submit">Search</Button>
-        <button type="button" className={css.reset} onClick={onReset}>
+        <button className={css.reset} type="button" onClick={onReset}>
           Clear filters
         </button>
       </div>

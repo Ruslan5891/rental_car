@@ -21,12 +21,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="en" className={manrope.variable} data-scroll-behavior="smooth">
+    <html className={manrope.variable} data-scroll-behavior="smooth" lang="en">
       <body>
         <TanStackProvider>
           <Header />
           {children}
-          <Toaster position="top-center" toastOptions={{ duration: TOAST_DURATION }} />
+          <Toaster position="top-right" toastOptions={{ duration: TOAST_DURATION }} />
         </TanStackProvider>
       </body>
     </html>

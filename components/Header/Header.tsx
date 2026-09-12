@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <header className={css.header}>
       <Container className={css.container}>
-        <Link href={ROUTES.home} className={css.logo} aria-label="RentalCar home">
+        <Link className={css.logo} href={ROUTES.home} aria-label="RentalCar home">
           <Image src="/images/logo.svg" alt="RentalCar" width={104} height={16} priority />
         </Link>
         <Navigation />

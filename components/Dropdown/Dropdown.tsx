@@ -139,14 +139,14 @@ export default function Dropdown({
 
   return (
     <div ref={rootRef} className={cn(css.wrapper, className)}>
-      <label id={`${controlId}-label`} htmlFor={controlId} className={css.label}>
+      <label className={css.label} id={`${controlId}-label`} htmlFor={controlId}>
         {label}
       </label>
       <button
+        className={css.control}
         id={controlId}
         type="button"
         role="combobox"
-        className={css.control}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         aria-controls={isOpen ? listId : undefined}
@@ -163,14 +163,14 @@ export default function Dropdown({
           <LuChevronDown className={css.icon} aria-hidden="true" />
         )}
       </button>
-      {name && <input type="hidden" name={name} value={value} />}
+      {name && <input name={name} type="hidden" value={value} />}
       {isOpen && (
         <ul
           ref={listRef}
+          className={css.list}
           id={listId}
           role="listbox"
           aria-labelledby={`${controlId}-label`}
-          className={css.list}
         >
           {options.map((option, index) => {
             const isSelected = index === selectedIndex;
@@ -179,14 +179,14 @@ export default function Dropdown({
             return (
               <li
                 key={option.value}
-                id={`${listId}-${index}`}
-                role="option"
-                aria-selected={isSelected}
                 className={cn(
                   css.option,
                   isSelected && css.optionSelected,
                   isActive && css.optionActive,
                 )}
+                id={`${listId}-${index}`}
+                role="option"
+                aria-selected={isSelected}
                 onPointerEnter={() => setActiveIndex(index)}
                 onClick={() => select(index)}
               >
