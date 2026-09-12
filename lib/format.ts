@@ -20,6 +20,10 @@ export function stripNonDigits(value: string): string {
   return value.replace(NON_DIGITS_PATTERN, '');
 }
 
+export function limitDigits(value: string, maxDigits?: number): string {
+  return maxDigits === undefined ? value : value.slice(0, maxDigits);
+}
+
 export function formatDigits(value: string): string {
   return value === '' ? '' : formatNumber(Number(value));
 }

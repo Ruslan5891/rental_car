@@ -1,20 +1,19 @@
 'use client';
 
-import { Button, Container } from '@/components';
-import type { CatalogErrorProps } from './types';
+import { Container, ErrorView } from '@/components';
+import type { ErrorPageProps } from '@/types/common';
 import css from './Catalog.module.css';
 
-export default function CatalogError({ error, retry }: CatalogErrorProps) {
+export default function CatalogError({ retry }: ErrorPageProps) {
   return (
     <main className={css.main}>
-      <Container className={css.message}>
-        <h1 className={css.messageTitle}>Could not load the catalog</h1>
-        <p className={css.messageText}>
-          {error.message || 'Something went wrong. Please try again.'}
-        </p>
-        <Button variant="outline" onClick={() => retry()}>
-          Try again
-        </Button>
+      <Container>
+        <ErrorView
+          heading="h1"
+          title="Could not load the catalog"
+          text="Something went wrong while loading the cars. Please check your connection and try again."
+          onRetry={retry}
+        />
       </Container>
     </main>
   );

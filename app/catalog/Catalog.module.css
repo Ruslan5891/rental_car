@@ -39,22 +39,3 @@
   display: flex;
   justify-content: center;
 }
-
-.message {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-lg);
-  padding: var(--space-2xl) 0;
-  text-align: center;
-}
-
-.messageTitle {
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--font-size-xl);
-  line-height: var(--line-height-relaxed);
-}
-
-.messageText {
-  max-width: 480px;
-}

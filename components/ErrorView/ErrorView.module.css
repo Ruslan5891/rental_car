@@ -1,13 +1,9 @@
-.main {
-  flex: 1;
-  padding: var(--page-padding-top) 0 var(--page-padding-bottom);
-}
-
-.message {
+.wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-lg);
+  padding: var(--space-2xl) 0;
   text-align: center;
 }
 
@@ -15,8 +11,13 @@
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-xl);
   line-height: var(--line-height-relaxed);
+  color: var(--color-main);
 }
 
 .text {
   max-width: 480px;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
+  color: var(--color-main);
 }

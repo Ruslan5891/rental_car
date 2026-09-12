@@ -2,6 +2,17 @@ import type { IconType } from 'react-icons';
 import { LuCalendar, LuCar, LuFuel, LuGauge, LuSettings } from 'react-icons/lu';
 import type { BookingRequest, CarSpecKey } from '@/types/car';
 
+export const SITE_URL = 'https://rental-car-sepia-five.vercel.app';
+
+export const SITE_NAME = 'RentalCar';
+
+export const OG_IMAGE = {
+  url: '/images/hero.jpg',
+  width: 1440,
+  height: 700,
+  alt: 'RentalCar — find your perfect rental car',
+};
+
 export const ROUTES = {
   home: '/',
   catalog: '/catalog',
@@ -41,6 +52,10 @@ export const NAME_PATTERN = /^[\p{L}][\p{L}\s'-]*$/u;
 export const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export const NON_DIGITS_PATTERN = /\D/g;
+
+export const DIGITS_PATTERN = /^\d+$/;
+
+export const MILEAGE_MAX_DIGITS = 7;
 
 export const BOOKING_ERRORS = {
   name: 'Please enter your name.',

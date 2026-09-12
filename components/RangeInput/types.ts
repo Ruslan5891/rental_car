@@ -10,4 +10,5 @@ export interface RangeInputProps extends ClassNameProps {
   onToChange: (value: string) => void;
   fromPlaceholder?: string;
   toPlaceholder?: string;
+  maxDigits?: number;
 }

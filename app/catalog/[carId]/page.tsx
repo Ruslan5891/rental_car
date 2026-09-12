@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { BookingForm, CarInfo, Container } from '@/components';
 import { getCarOrNotFound } from '@/lib/car';
+import { ROUTES, SITE_NAME, SITE_URL } from '@/lib/constants';
 import { formatCarTitle } from '@/lib/format';
 import css from './CarPage.module.css';
 
@@ -10,15 +11,21 @@ export async function generateMetadata({
 }: PageProps<'/catalog/[carId]'>): Promise<Metadata> {
   const { carId } = await params;
   const car = await getCarOrNotFound(carId);
-  const title = `${formatCarTitle(car.brand, car.model, car.year)} | RentalCar`;
+  const carTitle = formatCarTitle(car.brand, car.model, car.year);
+  const title = `${carTitle} | ${SITE_NAME}`;
+  const url = `${SITE_URL}${ROUTES.car(car.id)}`;
 
   return {
     title,
     description: car.description,
+    alternates: { canonical: url },
     openGraph: {
       title,
       description: car.description,
-      images: [{ url: car.img, alt: formatCarTitle(car.brand, car.model, car.year) }],
+      url,
+      siteName: SITE_NAME,
+      type: 'website',
+      images: [{ url: car.img, alt: carTitle }],
     },
   };
 }

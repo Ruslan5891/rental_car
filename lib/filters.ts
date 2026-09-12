@@ -1,4 +1,4 @@
-import { FILTER_PARAMS, ROUTES } from '@/lib/constants';
+import { DIGITS_PATTERN, FILTER_PARAMS, ROUTES } from '@/lib/constants';
 import type { CarFilters, CarFiltersDraft } from '@/types/car';
 import type { SearchParamsInput } from '@/types/common';
 
@@ -13,11 +13,13 @@ function readParam(params: SearchParamsInput, key: string): string | undefined {
 }
 
 function parseNonNegativeInteger(value: string | undefined): number | undefined {
-  if (!value) return undefined;
+  const digits = value?.trim();
 
-  const number = Number(value);
+  if (!digits || !DIGITS_PATTERN.test(digits)) return undefined;
 
-  return Number.isInteger(number) && number >= 0 ? number : undefined;
+  const number = Number(digits);
+
+  return Number.isSafeInteger(number) ? number : undefined;
 }
 
 export function parseCarFilters(params: SearchParamsInput): CarFilters {

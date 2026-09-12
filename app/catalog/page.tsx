@@ -3,16 +3,31 @@ import type { Metadata } from 'next';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import { Container, Loader } from '@/components';
 import { fetchCarFilters } from '@/lib/api';
+import { OG_IMAGE, ROUTES, SITE_NAME, SITE_URL } from '@/lib/constants';
 import { serializeCarFilters, parseCarFilters } from '@/lib/filters';
+import { noop } from '@/lib/noop';
 import { queryKeys } from '@/lib/queryKeys';
 import CatalogCars from './CatalogCars';
 import CatalogFilters from './CatalogFilters.client';
 import css from './Catalog.module.css';
 
+const title = 'Catalog | RentalCar';
+const description =
+  'Browse the RentalCar catalog: filter cars by brand, hourly price and mileage, and find the perfect car for your trip.';
+const url = `${SITE_URL}${ROUTES.catalog}`;
+
 export const metadata: Metadata = {
-  title: 'Catalog | RentalCar',
-  description:
-    'Browse the RentalCar catalog: filter cars by brand, hourly price and mileage, and find the perfect car for your trip.',
+  title,
+  description,
+  alternates: { canonical: url },
+  openGraph: {
+    title,
+    description,
+    url,
+    siteName: SITE_NAME,
+    type: 'website',
+    images: [OG_IMAGE],
+  },
 };
 
 export default async function CatalogPage({ searchParams }: PageProps<'/catalog'>) {
@@ -20,10 +35,12 @@ export default async function CatalogPage({ searchParams }: PageProps<'/catalog'
   const filtersKey = serializeCarFilters(filters);
   const queryClient = new QueryClient();
 
-  await queryClient.query({
-    queryKey: queryKeys.carFilters,
-    queryFn: fetchCarFilters,
-  });
+  await queryClient
+    .query({
+      queryKey: queryKeys.carFilters,
+      queryFn: fetchCarFilters,
+    })
+    .catch(noop);
 
   return (
     <main className={css.main}>

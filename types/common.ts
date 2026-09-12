@@ -10,4 +10,9 @@ export interface ChildrenProps {
 
 export type ClassValue = string | false | null | undefined;
 
+export interface ErrorPageProps {
+  error: Error & { digest?: string };
+  retry: () => void;
+}
+
 export type SearchParamsInput = URLSearchParams | Record<string, string | string[] | undefined>;

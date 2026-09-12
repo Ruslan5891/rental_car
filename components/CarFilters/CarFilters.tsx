@@ -7,7 +7,7 @@ import Button from '@/components/Button/Button';
 import Dropdown from '@/components/Dropdown/Dropdown';
 import type { DropdownOption } from '@/components/Dropdown/types';
 import RangeInput from '@/components/RangeInput/RangeInput';
-import { FILTER_PARAMS } from '@/lib/constants';
+import { FILTER_PARAMS, MILEAGE_MAX_DIGITS } from '@/lib/constants';
 import { buildCarFilters, isMileageRangeValid } from '@/lib/filters';
 import { formatPrice, numberToInputValue } from '@/lib/format';
 import type { CarFiltersProps } from './types';
@@ -66,6 +66,7 @@ export default function CarFilters({ brands, prices, filters, onApply, onReset }
         to={maxMileage}
         onFromChange={setMinMileage}
         onToChange={setMaxMileage}
+        maxDigits={MILEAGE_MAX_DIGITS}
       />
       <div className={css.actions}>
         <Button type="submit">Search</Button>

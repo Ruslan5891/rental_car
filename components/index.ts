@@ -7,6 +7,7 @@ export { default as CarList } from './CarList/CarList';
 export { default as Container } from './Container/Container';
 export { default as Dropdown } from './Dropdown/Dropdown';
 export { default as EmptyState } from './EmptyState/EmptyState';
+export { default as ErrorView } from './ErrorView/ErrorView';
 export { default as Header } from './Header/Header';
 export { default as Loader } from './Loader/Loader';
 export { default as RangeInput } from './RangeInput/RangeInput';

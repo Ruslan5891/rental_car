@@ -6,6 +6,8 @@
 
 Тестове завдання GoIT, модуль «Advanced Front End Engineering».
 
+**Демо:** [rental-car-sepia-five.vercel.app](https://rental-car-sepia-five.vercel.app)
+
 ## Технології
 
 - Next.js 16 (App Router) + TypeScript

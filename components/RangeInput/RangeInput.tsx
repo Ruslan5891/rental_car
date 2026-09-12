@@ -1,6 +1,6 @@
 import type { ChangeEvent } from 'react';
 import { cn } from '@/lib/classNames';
-import { formatDigits, stripNonDigits } from '@/lib/format';
+import { formatDigits, limitDigits, stripNonDigits } from '@/lib/format';
 import type { RangeInputProps } from './types';
 import css from './RangeInput.module.css';
 
@@ -14,14 +14,15 @@ export default function RangeInput({
   onToChange,
   fromPlaceholder = 'From',
   toPlaceholder = 'To',
+  maxDigits,
   className,
 }: RangeInputProps) {
   const handleFromChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onFromChange(stripNonDigits(event.target.value));
+    onFromChange(limitDigits(stripNonDigits(event.target.value), maxDigits));
   };
 
   const handleToChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onToChange(stripNonDigits(event.target.value));
+    onToChange(limitDigits(stripNonDigits(event.target.value), maxDigits));
   };
 
   return (

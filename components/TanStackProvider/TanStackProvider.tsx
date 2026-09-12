@@ -11,6 +11,7 @@ export default function TanStackProvider({ children }: TanStackProviderProps) {
         defaultOptions: {
           queries: {
             staleTime: 60 * 1000,
+            retry: 1,
           },
         },
       }),

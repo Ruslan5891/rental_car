@@ -1,18 +1,19 @@
 'use client';
 
-import { Button, Container } from '@/components';
-import css from './error.module.css';
-import type { CarErrorProps } from './types';
+import { Container, ErrorView } from '@/components';
+import type { ErrorPageProps } from '@/types/common';
+import css from './CarPage.module.css';
 
-export default function CarError({ error, retry }: CarErrorProps) {
+export default function CarError({ retry }: ErrorPageProps) {
   return (
     <main className={css.main}>
-      <Container className={css.message}>
-        <h1 className={css.title}>Could not load the car</h1>
-        <p className={css.text}>{error.message || 'Something went wrong. Please try again.'}</p>
-        <Button variant="outline" onClick={() => retry()}>
-          Try again
-        </Button>
+      <Container>
+        <ErrorView
+          heading="h1"
+          title="Could not load the car"
+          text="Something went wrong while loading this car. Please check your connection and try again."
+          onRetry={retry}
+        />
       </Container>
     </main>
   );

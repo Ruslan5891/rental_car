@@ -4,7 +4,7 @@ import { Toaster } from 'react-hot-toast';
 import 'modern-normalize/modern-normalize.css';
 import './globals.css';
 import { Header, TanStackProvider } from '@/components';
-import { TOAST_DURATION } from '@/lib/constants';
+import { OG_IMAGE, SITE_NAME, SITE_URL, TOAST_DURATION } from '@/lib/constants';
 
 const manrope = Manrope({
   weight: ['400', '500', '600', '700'],
@@ -14,9 +14,19 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: 'RentalCar',
+  metadataBase: new URL(SITE_URL),
+  title: SITE_NAME,
   description:
     'RentalCar is a car rental service: browse the catalog, filter cars and book a ride.',
+  openGraph: {
+    title: SITE_NAME,
+    description:
+      'RentalCar is a car rental service: browse the catalog, filter cars and book a ride.',
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    type: 'website',
+    images: [OG_IMAGE],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {

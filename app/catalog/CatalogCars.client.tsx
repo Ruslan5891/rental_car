@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { Button, CarList, EmptyState, Loader } from '@/components';
+import { Button, CarList, EmptyState, ErrorView, Loader } from '@/components';
 import { fetchCars } from '@/lib/api';
 import { ROUTES } from '@/lib/constants';
 import { getNextCarsPage } from '@/lib/pagination';
@@ -35,12 +35,12 @@ export default function CatalogCarsClient({ filters }: CatalogCarsProps) {
 
   if (isError) {
     return (
-      <div className={css.message} role="alert">
-        <p className={css.messageTitle}>Could not load the cars. Please try again.</p>
-        <Button variant="outline" onClick={() => refetch()}>
-          Try again
-        </Button>
-      </div>
+      <ErrorView
+        heading="h3"
+        title="Could not load the cars"
+        text="Something went wrong while loading the cars. Please check your connection and try again."
+        onRetry={() => refetch()}
+      />
     );
   }
 

@@ -1,13 +1,25 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Button } from '@/components';
-import { ROUTES } from '@/lib/constants';
+import { OG_IMAGE, ROUTES, SITE_NAME, SITE_URL } from '@/lib/constants';
 import css from './page.module.css';
 
+const title = 'RentalCar — Find your perfect rental car';
+const description =
+  'Reliable and budget-friendly car rentals for any journey. Browse the catalog, filter by brand, price and mileage, and book your car in minutes.';
+
 export const metadata: Metadata = {
-  title: 'RentalCar — Find your perfect rental car',
-  description:
-    'Reliable and budget-friendly car rentals for any journey. Browse the catalog, filter by brand, price and mileage, and book your car in minutes.',
+  title,
+  description,
+  alternates: { canonical: SITE_URL },
+  openGraph: {
+    title,
+    description,
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    type: 'website',
+    images: [OG_IMAGE],
+  },
 };
 
 export default function HomePage() {
